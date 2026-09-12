@@ -14,9 +14,9 @@ header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0
 .nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .logo{font-size:22px;font-weight:900;cursor:pointer}.menu{display:flex;gap:18px}.menu a{text-decoration:none;color:#111827;font-weight:800}
 .btn{border:0;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer;min-height:44px}.btn-primary{background:#2563EB;color:#fff}.btn-dark{background:#111827;color:#fff}.btn-light{background:#fff;border:1px solid #D1D5DB}.btn-danger{background:#DC2626;color:#fff}
-.hero{background:linear-gradient(135deg,#0F172A,#1E3A8A 58%,#2563EB);color:#fff;padding:72px 0}.hero h1{font-size:46px;margin-bottom:12px}.hero p{color:#D1D5DB}
+.hero{background:#0F172A;padding:0;overflow:hidden}.hero-visual{display:block;width:100%;height:auto;max-height:760px;object-fit:cover;object-position:top center}.hero-copy{display:none}
 .section{padding:42px 0}.panel{background:#fff;border:1px solid #E5E7EB;border-radius:18px;padding:22px;margin-bottom:20px;box-shadow:0 10px 25px rgba(15,23,42,.05)}.panel h2{margin-bottom:14px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden}.thumb{height:180px;background:linear-gradient(135deg,#E2E8F0,#CBD5E1);display:flex;align-items:center;justify-content:center;font-size:60px}.card-body{padding:16px}.name{font-size:19px;font-weight:900}.meta{color:#6B7280;font-size:14px;margin:4px 0 10px}.price{font-size:21px;font-weight:900;color:#2563EB;margin-bottom:12px}.actions{display:flex;gap:8px}.actions .btn{flex:1}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden}.thumb{height:180px;background:#e5e7eb;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block}.card-body{padding:16px}.name{font-size:19px;font-weight:900}.meta{color:#6B7280;font-size:14px;margin:4px 0 10px}.price{font-size:21px;font-weight:900;color:#2563EB;margin-bottom:12px}.actions{display:flex;gap:8px}.actions .btn{flex:1}
 .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.form-group{margin-bottom:12px}.form-group label{display:block;font-weight:800;margin-bottom:6px}.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px;border:1px solid #D1D5DB;border-radius:10px}.form-group textarea{min-height:110px}
 .hidden{display:none!important}.status{padding:12px;border-radius:10px;background:#EFF6FF;color:#1D4ED8;margin-bottom:14px}.warn{background:#FEF3C7;color:#92400E}.ok{background:#ECFDF5;color:#065F46}
 .table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:11px;border-bottom:1px solid #E5E7EB;text-align:left}
@@ -43,10 +43,7 @@ footer{background:#0F172A;color:#CBD5E1;padding:32px 0;margin-top:30px}
 <main>
 <section id="homePage">
   <div class="hero">
-    <div class="wrap">
-      <h1>실제 DB에 연결되는<br>중고차 플랫폼</h1>
-      <p>Supabase Auth + Postgres + RLS 기반 운영형 구조입니다.</p>
-    </div>
+    <img class="hero-visual" src="assets/home-preview.webp" alt="AUTO MARKET 중고차 플랫폼 메인 이미지">
   </div>
   <div class="section">
     <div class="wrap">
@@ -127,7 +124,7 @@ footer{background:#0F172A;color:#CBD5E1;padding:32px 0;margin-top:30px}
 </div></section>
 </main>
 
-<footer><div class="wrap">AUTO MARKET · Step 14 Supabase Connected</div></footer>
+<footer><div class="wrap">AUTO MARKET · Step 13 Supabase Ready</div></footer>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -138,6 +135,7 @@ const client = configured ? supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISH
 let currentUser = null;
 let profile = null;
 let cars = [];
+const carImages={1:'assets/santafe.webp',2:'assets/sorento.webp',3:'assets/gv70.webp',4:'assets/ioniq5.webp'};
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}
 function configGuard(){if(configured)return true;toast('먼저 Supabase URL과 Publishable Key를 입력해주세요.');return false}
 function showPage(page){['homePage','loginPage','signupPage','wishlistPage','inquiryPage','adminPage'].forEach(id=>document.getElementById(id).classList.add('hidden'));document.getElementById(page+'Page').classList.remove('hidden');if(page==='wishlist')loadWishlist();if(page==='inquiry')fillInquiry();if(page==='admin')loadAdmin();window.scrollTo({top:0,behavior:'smooth'})}
@@ -148,9 +146,9 @@ async function signup(){if(!configGuard())return;const name=signupName.value.tri
 async function login(){if(!configGuard())return;const {error}=await client.auth.signInWithPassword({email:loginEmail.value.trim(),password:loginPw.value});if(error){toast('로그인 실패: '+error.message);return}toast('로그인되었습니다.');showPage('home')}
 async function logout(){if(!configGuard())return;await client.auth.signOut();toast('로그아웃되었습니다.');showPage('home')}
 async function loadCars(){if(!configured){carGrid.innerHTML='<p>Supabase 설정 후 실제 차량 DB가 표시됩니다.</p>';return}const {data,error}=await client.from('cars').select('*').eq('status','available').order('created_at',{ascending:false});if(error){carGrid.innerHTML='<p>차량 불러오기 실패: '+error.message+'</p>';return}cars=data||[];renderCars()}
-function renderCars(){carGrid.innerHTML=cars.length?cars.map(c=>`<article class="card"><div class="thumb">${c.emoji||'🚗'}</div><div class="card-body"><div class="name">${c.name}</div><div class="meta">${c.year}년 · ${Number(c.km).toLocaleString()}km · ${c.fuel}</div><div class="price">${Number(c.price).toLocaleString()}만원</div><div class="actions"><button class="btn btn-light" onclick="toggleWishlist(${c.id})">♡ 찜하기</button><button class="btn btn-dark" onclick="startInquiry(${c.id})">구매문의</button></div></div></article>`).join(''):'<p>등록된 차량이 없습니다.</p>'}
+function renderCars(){carGrid.innerHTML=cars.length?cars.map(c=>`<article class="card"><div class="thumb"><img src="${carImages[c.id]||'assets/sorento.webp'}" alt="${c.name}"></div><div class="card-body"><div class="name">${c.name}</div><div class="meta">${c.year}년 · ${Number(c.km).toLocaleString()}km · ${c.fuel}</div><div class="price">${Number(c.price).toLocaleString()}만원</div><div class="actions"><button class="btn btn-light" onclick="toggleWishlist(${c.id})">♡ 찜하기</button><button class="btn btn-dark" onclick="startInquiry(${c.id})">구매문의</button></div></div></article>`).join(''):'<p>등록된 차량이 없습니다.</p>'}
 async function toggleWishlist(carId){if(!currentUser){toast('로그인이 필요합니다.');showPage('login');return}const {data}=await client.from('wishlists').select('id').eq('user_id',currentUser.id).eq('car_id',carId).maybeSingle();if(data){const {error}=await client.from('wishlists').delete().eq('id',data.id);if(error){toast(error.message);return}toast('찜에서 삭제했습니다.')}else{const {error}=await client.from('wishlists').insert({user_id:currentUser.id,car_id:carId});if(error){toast(error.message);return}toast('찜에 저장했습니다.')}}
-async function loadWishlist(){if(!currentUser){wishlistGrid.innerHTML='<p>로그인 후 확인할 수 있습니다.</p>';return}const {data,error}=await client.from('wishlists').select('car_id,cars(*)').eq('user_id',currentUser.id);if(error){wishlistGrid.innerHTML='<p>'+error.message+'</p>';return}const list=(data||[]).map(x=>x.cars).filter(Boolean);wishlistGrid.innerHTML=list.length?list.map(c=>`<article class="card"><div class="thumb">${c.emoji||'🚗'}</div><div class="card-body"><div class="name">${c.name}</div><div class="meta">${c.year}년 · ${Number(c.km).toLocaleString()}km</div><div class="price">${Number(c.price).toLocaleString()}만원</div><button class="btn btn-dark" style="width:100%" onclick="startInquiry(${c.id})">구매문의</button></div></article>`).join(''):'<p>찜한 차량이 없습니다.</p>'}
+async function loadWishlist(){if(!currentUser){wishlistGrid.innerHTML='<p>로그인 후 확인할 수 있습니다.</p>';return}const {data,error}=await client.from('wishlists').select('car_id,cars(*)').eq('user_id',currentUser.id);if(error){wishlistGrid.innerHTML='<p>'+error.message+'</p>';return}const list=(data||[]).map(x=>x.cars).filter(Boolean);wishlistGrid.innerHTML=list.length?list.map(c=>`<article class="card"><div class="thumb"><img src="${carImages[c.id]||'assets/sorento.webp'}" alt="${c.name}"></div><div class="card-body"><div class="name">${c.name}</div><div class="meta">${c.year}년 · ${Number(c.km).toLocaleString()}km</div><div class="price">${Number(c.price).toLocaleString()}만원</div><button class="btn btn-dark" style="width:100%" onclick="startInquiry(${c.id})">구매문의</button></div></article>`).join(''):'<p>찜한 차량이 없습니다.</p>'}
 function startInquiry(carId){if(!currentUser){toast('로그인이 필요합니다.');showPage('login');return}showPage('inquiry');inquiryCar.value=String(carId)}
 function fillInquiry(){inquiryCar.innerHTML=cars.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');inquiryName.value=profile?.name||'';inquiryPhone.value=profile?.phone||''}
 async function saveInquiry(){if(!currentUser){toast('로그인이 필요합니다.');return}const carId=Number(inquiryCar.value);const car=cars.find(c=>c.id===carId);const payload={user_id:currentUser.id,car_id:carId,car_name:car?.name||'',name:inquiryName.value.trim(),phone:inquiryPhone.value.trim(),message:inquiryText.value.trim(),status:'received'};if(!payload.name||!payload.phone||!payload.message){toast('문의 내용을 모두 입력해주세요.');return}const {error}=await client.from('inquiries').insert(payload);if(error){toast(error.message);return}inquiryText.value='';toast('구매 문의가 접수되었습니다.')}
