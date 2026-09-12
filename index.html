@@ -14,16 +14,16 @@ header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0
 .nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .logo{font-size:22px;font-weight:900;cursor:pointer}.menu{display:flex;gap:18px}.menu a{text-decoration:none;color:#111827;font-weight:800}
 .btn{border:0;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer;min-height:44px}.btn-primary{background:#2563EB;color:#fff}.btn-dark{background:#111827;color:#fff}.btn-light{background:#fff;border:1px solid #D1D5DB}.btn-danger{background:#DC2626;color:#fff}
-.hero{background:#0F172A;padding:0;overflow:hidden}.hero-visual{display:block;width:100%;height:auto;max-height:760px;object-fit:cover;object-position:top center}.hero-copy{display:none}
+.hero{background:#0F172A;color:#fff}.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:520px;gap:0}.hero-copy{padding:56px 6vw 56px max(4vw,24px)}.hero-kicker{display:inline-block;background:rgba(37,99,235,.18);color:#bfdbfe;border:1px solid rgba(147,197,253,.35);padding:7px 11px;border-radius:999px;font-weight:800;font-size:13px;margin-bottom:16px}.hero h1{font-size:48px;line-height:1.1;margin-bottom:16px}.hero p{font-size:17px;color:#cbd5e1;max-width:560px}.hero-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}.hero-photo{height:520px;overflow:hidden}.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}.photo-note{font-size:12px;color:#94a3b8;margin-top:10px}.thumb{height:210px}.card{transition:.2s}.card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(15,23,42,.12)}
 .section{padding:42px 0}.panel{background:#fff;border:1px solid #E5E7EB;border-radius:18px;padding:22px;margin-bottom:20px;box-shadow:0 10px 25px rgba(15,23,42,.05)}.panel h2{margin-bottom:14px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden}.thumb{height:180px;background:#e5e7eb;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block}.card-body{padding:16px}.name{font-size:19px;font-weight:900}.meta{color:#6B7280;font-size:14px;margin:4px 0 10px}.price{font-size:21px;font-weight:900;color:#2563EB;margin-bottom:12px}.actions{display:flex;gap:8px}.actions .btn{flex:1}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden}.thumb{height:210px;background:#e5e7eb;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block}.card-body{padding:16px}.name{font-size:19px;font-weight:900}.meta{color:#6B7280;font-size:14px;margin:4px 0 10px}.price{font-size:21px;font-weight:900;color:#2563EB;margin-bottom:12px}.actions{display:flex;gap:8px}.actions .btn{flex:1}
 .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.form-group{margin-bottom:12px}.form-group label{display:block;font-weight:800;margin-bottom:6px}.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px;border:1px solid #D1D5DB;border-radius:10px}.form-group textarea{min-height:110px}
 .hidden{display:none!important}.status{padding:12px;border-radius:10px;background:#EFF6FF;color:#1D4ED8;margin-bottom:14px}.warn{background:#FEF3C7;color:#92400E}.ok{background:#ECFDF5;color:#065F46}
 .table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:11px;border-bottom:1px solid #E5E7EB;text-align:left}
 .toast{position:fixed;right:20px;bottom:20px;background:#111827;color:#fff;padding:12px 15px;border-radius:10px;opacity:0;transition:.2s}.toast.show{opacity:1}
 footer{background:#0F172A;color:#CBD5E1;padding:32px 0;margin-top:30px}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.menu{display:none}.form-grid{grid-template-columns:1fr}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.hero h1{font-size:32px}.actions{flex-direction:column}}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-photo{height:360px}.hero-copy{padding:42px 6vw}.grid{grid-template-columns:repeat(2,1fr)}.menu{display:none}.form-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.hero h1{font-size:34px}.hero-photo{height:260px}.actions{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -43,7 +43,19 @@ footer{background:#0F172A;color:#CBD5E1;padding:32px 0;margin-top:30px}
 <main>
 <section id="homePage">
   <div class="hero">
-    <img class="hero-visual" src="assets/home-preview.webp" alt="AUTO MARKET 중고차 플랫폼 메인 이미지">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="hero-kicker">검증된 중고차를 한눈에</div>
+        <h1>좋은 차를<br>더 쉽게 만나보세요</h1>
+        <p>실제 차량 사진과 가격, 주행거리 정보를 확인하고 마음에 드는 차량을 찜하거나 바로 구매 문의할 수 있습니다.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="document.getElementById('carGrid').scrollIntoView({behavior:'smooth'})">차량 둘러보기</button>
+          <button class="btn btn-light" onclick="showPage('wishlist')">찜한 차량</button>
+        </div>
+        <div class="photo-note">Supabase 실제 DB 연결 · 로그인 · 찜 · 구매문의 지원</div>
+      </div>
+      <div class="hero-photo"><img src="assets/santafe.webp" alt="AUTO MARKET 대표 차량"></div>
+    </div>
   </div>
   <div class="section">
     <div class="wrap">
@@ -124,7 +136,7 @@ footer{background:#0F172A;color:#CBD5E1;padding:32px 0;margin-top:30px}
 </div></section>
 </main>
 
-<footer><div class="wrap">AUTO MARKET · Step 13 Supabase Ready</div></footer>
+<footer><div class="wrap">AUTO MARKET · Supabase Connected</div></footer>
 <div class="toast" id="toast"></div>
 
 <script>
