@@ -14,9 +14,9 @@ header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0
 .nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .logo{font-size:22px;font-weight:900;cursor:pointer}.menu{display:flex;gap:18px}.menu a{text-decoration:none;color:#111827;font-weight:800}
 .btn{border:0;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer;min-height:44px}.btn-primary{background:#2563EB;color:#fff}.btn-dark{background:#111827;color:#fff}.btn-light{background:#fff;border:1px solid #D1D5DB}.btn-danger{background:#DC2626;color:#fff}
-.hero{background:#0F172A;color:#fff}.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:520px;gap:0}.hero-copy{padding:56px 6vw 56px max(4vw,24px)}.hero-kicker{display:inline-block;background:rgba(37,99,235,.18);color:#bfdbfe;border:1px solid rgba(147,197,253,.35);padding:7px 11px;border-radius:999px;font-weight:800;font-size:13px;margin-bottom:16px}.hero h1{font-size:48px;line-height:1.1;margin-bottom:16px}.hero p{font-size:17px;color:#cbd5e1;max-width:560px}.hero-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}.hero-photo{height:520px;overflow:hidden}.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}.photo-note{font-size:12px;color:#94a3b8;margin-top:10px}.thumb{height:210px}.card{transition:.2s}.card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(15,23,42,.12)}
+.hero{background:#0F172A;color:#fff}.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:520px;gap:0}.hero-copy{padding:56px 6vw 56px max(4vw,24px)}.hero-kicker{display:inline-block;background:rgba(37,99,235,.18);color:#bfdbfe;border:1px solid rgba(147,197,253,.35);padding:7px 11px;border-radius:999px;font-weight:800;font-size:13px;margin-bottom:16px}.hero h1{font-size:48px;line-height:1.1;margin-bottom:16px}.hero p{font-size:17px;color:#cbd5e1;max-width:560px}.hero-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}.hero-photo{height:520px;overflow:hidden}.hero-photo img{width:100%;height:100%;object-fit:contain;display:block;background:#fff;padding:20px}.photo-note{font-size:12px;color:#94a3b8;margin-top:10px}.card{transition:.2s}.card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(15,23,42,.12)}
 .section{padding:42px 0}.panel{background:#fff;border:1px solid #E5E7EB;border-radius:18px;padding:22px;margin-bottom:20px;box-shadow:0 10px 25px rgba(15,23,42,.05)}.panel h2{margin-bottom:14px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden}.thumb{height:210px;background:#e5e7eb;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block}.card-body{padding:16px}.name{font-size:19px;font-weight:900}.meta{color:#6B7280;font-size:14px;margin:4px 0 10px}.price{font-size:21px;font-weight:900;color:#2563EB;margin-bottom:12px}.actions{display:flex;gap:8px}.actions .btn{flex:1}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden}.thumb{height:210px;background:#fff;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:contain;display:block;background:#fff;padding:8px}.card-body{padding:16px}.name{font-size:19px;font-weight:900}.meta{color:#6B7280;font-size:14px;margin:4px 0 10px}.price{font-size:21px;font-weight:900;color:#2563EB;margin-bottom:12px}.actions{display:flex;gap:8px}.actions .btn{flex:1}
 .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.form-group{margin-bottom:12px}.form-group label{display:block;font-weight:800;margin-bottom:6px}.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px;border:1px solid #D1D5DB;border-radius:10px}.form-group textarea{min-height:110px}
 .hidden{display:none!important}.status{padding:12px;border-radius:10px;background:#EFF6FF;color:#1D4ED8;margin-bottom:14px}.warn{background:#FEF3C7;color:#92400E}.ok{background:#ECFDF5;color:#065F46}
 .table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:11px;border-bottom:1px solid #E5E7EB;text-align:left}
@@ -39,136 +39,46 @@ footer{background:#0F172A;color:#CBD5E1;padding:32px 0;margin-top:30px}
     <div id="userArea"></div>
   </div>
 </header>
-
 <main>
 <section id="homePage">
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <div class="hero-kicker">검증된 중고차를 한눈에</div>
-        <h1>좋은 차를<br>더 쉽게 만나보세요</h1>
-        <p>실제 차량 사진과 가격, 주행거리 정보를 확인하고 마음에 드는 차량을 찜하거나 바로 구매 문의할 수 있습니다.</p>
-        <div class="hero-actions">
-          <button class="btn btn-primary" onclick="document.getElementById('carGrid').scrollIntoView({behavior:'smooth'})">차량 둘러보기</button>
-          <button class="btn btn-light" onclick="showPage('wishlist')">찜한 차량</button>
-        </div>
-        <div class="photo-note">Supabase 실제 DB 연결 · 로그인 · 찜 · 구매문의 지원</div>
-      </div>
-      <div class="hero-photo"><img src="assets/santafe.webp" alt="AUTO MARKET 대표 차량"></div>
-    </div>
-  </div>
-  <div class="section">
-    <div class="wrap">
-      <div id="configStatus" class="status warn"></div>
-      <div class="panel">
-        <h2>등록 차량</h2>
-        <div class="grid" id="carGrid"></div>
-      </div>
-    </div>
-  </div>
+  <div class="hero"><div class="hero-inner">
+    <div class="hero-copy"><div class="hero-kicker">검증된 중고차를 한눈에</div><h1>좋은 차를<br>더 쉽게 만나보세요</h1><p>실제 차량 사진과 가격, 주행거리 정보를 확인하고 마음에 드는 차량을 찜하거나 바로 구매 문의할 수 있습니다.</p><div class="hero-actions"><button class="btn btn-primary" onclick="document.getElementById('carGrid').scrollIntoView({behavior:'smooth'})">차량 둘러보기</button><button class="btn btn-light" onclick="showPage('wishlist')">찜한 차량</button></div><div class="photo-note">Supabase 실제 DB 연결 · 로그인 · 찜 · 구매문의 지원</div></div>
+    <div class="hero-photo"><img src="https://platform.cstatic-images.com/in/v2/stock_photos/3204c8d2-0dc8-48bd-9dde-91b7aa7f02fc/bed6e884-f538-43e2-a838-c8892bde8df4.png" alt="AUTO MARKET 대표 차량"></div>
+  </div></div>
+  <div class="section"><div class="wrap"><div id="configStatus" class="status warn"></div><div class="panel"><h2>등록 차량</h2><div class="grid" id="carGrid"></div></div></div></div>
 </section>
-
-<section id="loginPage" class="hidden section"><div class="wrap">
-  <div class="panel" style="max-width:520px;margin:auto">
-    <h2>로그인</h2>
-    <div class="form-group"><label>이메일</label><input id="loginEmail" type="email"></div>
-    <div class="form-group"><label>비밀번호</label><input id="loginPw" type="password"></div>
-    <button class="btn btn-primary" style="width:100%;margin-bottom:8px" onclick="login()">로그인</button>
-    <button class="btn btn-light" style="width:100%" onclick="showPage('signup')">회원가입</button>
-  </div>
-</div></section>
-
-<section id="signupPage" class="hidden section"><div class="wrap">
-  <div class="panel" style="max-width:520px;margin:auto">
-    <h2>회원가입</h2>
-    <div class="form-group"><label>이름</label><input id="signupName"></div>
-    <div class="form-group"><label>이메일</label><input id="signupEmail" type="email"></div>
-    <div class="form-group"><label>비밀번호</label><input id="signupPw" type="password"></div>
-    <div class="form-group"><label>연락처</label><input id="signupPhone" placeholder="010-0000-0000"></div>
-    <button class="btn btn-primary" style="width:100%" onclick="signup()">가입하기</button>
-  </div>
-</div></section>
-
-<section id="wishlistPage" class="hidden section"><div class="wrap">
-  <div class="panel"><h2>찜한 차량</h2><div class="grid" id="wishlistGrid"></div></div>
-</div></section>
-
-<section id="inquiryPage" class="hidden section"><div class="wrap">
-  <div class="panel" style="max-width:650px;margin:auto">
-    <h2>구매 문의</h2>
-    <div class="form-group"><label>차량</label><select id="inquiryCar"></select></div>
-    <div class="form-group"><label>이름</label><input id="inquiryName"></div>
-    <div class="form-group"><label>연락처</label><input id="inquiryPhone"></div>
-    <div class="form-group"><label>문의내용</label><textarea id="inquiryText"></textarea></div>
-    <button class="btn btn-primary" style="width:100%" onclick="saveInquiry()">문의 저장</button>
-  </div>
-</div></section>
-
-<section id="adminPage" class="hidden section"><div class="wrap">
-  <div class="panel">
-    <h2>관리자 차량 등록</h2>
-    <div class="form-grid">
-      <div class="form-group"><label>제조사</label><input id="adminBrand"></div>
-      <div class="form-group"><label>차량명</label><input id="adminName"></div>
-      <div class="form-group"><label>차종</label><input id="adminType"></div>
-      <div class="form-group"><label>연식</label><input id="adminYear" type="number"></div>
-      <div class="form-group"><label>주행거리</label><input id="adminKm" type="number"></div>
-      <div class="form-group"><label>연료</label><input id="adminFuel"></div>
-      <div class="form-group"><label>가격(만원)</label><input id="adminPrice" type="number"></div>
-      <div class="form-group"><label>아이콘</label><input id="adminEmoji" value="🚗"></div>
-    </div>
-    <button class="btn btn-primary" onclick="addCar()">차량 추가</button>
-  </div>
-  <div class="panel">
-    <h2>차량 관리</h2>
-    <div class="table-wrap"><table>
-      <thead><tr><th>ID</th><th>차량명</th><th>제조사</th><th>연식</th><th>주행거리</th><th>가격</th><th>관리</th></tr></thead>
-      <tbody id="adminCarTable"></tbody>
-    </table></div>
-  </div>
-  <div class="panel">
-    <h2>구매 문의</h2>
-    <div class="table-wrap"><table>
-      <thead><tr><th>차량</th><th>이름</th><th>연락처</th><th>내용</th><th>상태</th></tr></thead>
-      <tbody id="adminInquiryTable"></tbody>
-    </table></div>
-  </div>
-</div></section>
+<section id="loginPage" class="hidden section"><div class="wrap"><div class="panel" style="max-width:520px;margin:auto"><h2>로그인</h2><div class="form-group"><label>이메일</label><input id="loginEmail" type="email"></div><div class="form-group"><label>비밀번호</label><input id="loginPw" type="password"></div><button class="btn btn-primary" style="width:100%;margin-bottom:8px" onclick="login()">로그인</button><button class="btn btn-light" style="width:100%" onclick="showPage('signup')">회원가입</button></div></div></section>
+<section id="signupPage" class="hidden section"><div class="wrap"><div class="panel" style="max-width:520px;margin:auto"><h2>회원가입</h2><div class="form-group"><label>이름</label><input id="signupName"></div><div class="form-group"><label>이메일</label><input id="signupEmail" type="email"></div><div class="form-group"><label>비밀번호</label><input id="signupPw" type="password"></div><div class="form-group"><label>연락처</label><input id="signupPhone" placeholder="010-0000-0000"></div><button class="btn btn-primary" style="width:100%" onclick="signup()">가입하기</button></div></div></section>
+<section id="wishlistPage" class="hidden section"><div class="wrap"><div class="panel"><h2>찜한 차량</h2><div class="grid" id="wishlistGrid"></div></div></div></section>
+<section id="inquiryPage" class="hidden section"><div class="wrap"><div class="panel" style="max-width:650px;margin:auto"><h2>구매 문의</h2><div class="form-group"><label>차량</label><select id="inquiryCar"></select></div><div class="form-group"><label>이름</label><input id="inquiryName"></div><div class="form-group"><label>연락처</label><input id="inquiryPhone"></div><div class="form-group"><label>문의내용</label><textarea id="inquiryText"></textarea></div><button class="btn btn-primary" style="width:100%" onclick="saveInquiry()">문의 저장</button></div></div></section>
+<section id="adminPage" class="hidden section"><div class="wrap"><div class="panel"><h2>관리자 차량 등록</h2><div class="form-grid"><div class="form-group"><label>제조사</label><input id="adminBrand"></div><div class="form-group"><label>차량명</label><input id="adminName"></div><div class="form-group"><label>차종</label><input id="adminType"></div><div class="form-group"><label>연식</label><input id="adminYear" type="number"></div><div class="form-group"><label>주행거리</label><input id="adminKm" type="number"></div><div class="form-group"><label>연료</label><input id="adminFuel"></div><div class="form-group"><label>가격(만원)</label><input id="adminPrice" type="number"></div><div class="form-group"><label>아이콘</label><input id="adminEmoji" value="🚗"></div></div><button class="btn btn-primary" onclick="addCar()">차량 추가</button></div><div class="panel"><h2>차량 관리</h2><div class="table-wrap"><table><thead><tr><th>ID</th><th>차량명</th><th>제조사</th><th>연식</th><th>주행거리</th><th>가격</th><th>관리</th></tr></thead><tbody id="adminCarTable"></tbody></table></div></div><div class="panel"><h2>구매 문의</h2><div class="table-wrap"><table><thead><tr><th>차량</th><th>이름</th><th>연락처</th><th>내용</th><th>상태</th></tr></thead><tbody id="adminInquiryTable"></tbody></table></div></div></div></section>
 </main>
-
-<footer><div class="wrap">AUTO MARKET · Supabase Connected</div></footer>
-<div class="toast" id="toast"></div>
-
+<footer><div class="wrap">AUTO MARKET · Supabase Connected</div></footer><div class="toast" id="toast"></div>
 <script>
-const SUPABASE_URL = 'https://qqmwnocoshpjattpsdqr.supabase.co';
-const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_chCdiE2r7nutrIUuQDqb2g_g1gzU6Nr';
-const configured = !SUPABASE_URL.includes('YOUR_PROJECT') && !SUPABASE_PUBLISHABLE_KEY.includes('YOUR_');
-const client = configured ? supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY) : null;
-let currentUser = null;
-let profile = null;
-let cars = [];
-const carImages={1:'assets/santafe.webp',2:'assets/sorento.webp',3:'assets/gv70.webp',4:'assets/ioniq5.webp'};
+const SUPABASE_URL='https://qqmwnocoshpjattpsdqr.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_chCdiE2r7nutrIUuQDqb2g_g1gzU6Nr';
+const configured=true; const client=supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+let currentUser=null,profile=null,cars=[];
+const carImages={1:'https://platform.cstatic-images.com/in/v2/stock_photos/3204c8d2-0dc8-48bd-9dde-91b7aa7f02fc/bed6e884-f538-43e2-a838-c8892bde8df4.png',2:'https://carimages.d2cmedia.ca/newcarimages/en/cb69ad03dc40ddf/Kia/Sorento/2022/640/425872-TFggUHJlbWl1bSBhd2QgU0lFR0VTIENIQVVGRkFOVFMgQ0FNJkVhY3V0ZTtSQSBERSBSRUNVTA/white/front45.png',3:'https://www.genesisofbrooklyn.com/assets/stock/colormatched_01/transparent/1280/cc_2024gss02_01_1280/cc_2024gss020063_01_1280_wht.png?bg-color=FFFFFF',4:'https://images.carexpert.com.au/resize/3000/-/cms/v1/media/2021-10-2022-hyundai-ioniq-5-review-4.jpg'};
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}
-function configGuard(){if(configured)return true;toast('먼저 Supabase URL과 Publishable Key를 입력해주세요.');return false}
 function showPage(page){['homePage','loginPage','signupPage','wishlistPage','inquiryPage','adminPage'].forEach(id=>document.getElementById(id).classList.add('hidden'));document.getElementById(page+'Page').classList.remove('hidden');if(page==='wishlist')loadWishlist();if(page==='inquiry')fillInquiry();if(page==='admin')loadAdmin();window.scrollTo({top:0,behavior:'smooth'})}
-function renderUser(){const el=document.getElementById('userArea');if(currentUser){el.innerHTML=`<span style="margin-right:8px"><b>${profile?.name||currentUser.email}</b></span><button class="btn btn-light" onclick="logout()">로그아웃</button>`}else{el.innerHTML=`<button class="btn btn-light" onclick="showPage('login')">로그인</button>`}document.getElementById('adminMenu').classList.toggle('hidden',profile?.role!=='admin')}
-async function initAuth(){const s=document.getElementById('configStatus');if(!configured){s.textContent='Supabase 연결 전입니다.';renderUser();return}s.className='status ok';s.textContent='Supabase 연결 완료 · 실제 DB 사용 중';const {data:{session}}=await client.auth.getSession();currentUser=session?.user||null;await loadProfile();renderUser();client.auth.onAuthStateChange(async(_event,session)=>{currentUser=session?.user||null;await loadProfile();renderUser()})}
-async function loadProfile(){profile=null;if(!currentUser||!configured)return;const {data}=await client.from('profiles').select('*').eq('id',currentUser.id).maybeSingle();profile=data||null}
-async function signup(){if(!configGuard())return;const name=signupName.value.trim(),email=signupEmail.value.trim(),pw=signupPw.value,phone=signupPhone.value.trim();if(!name||!email||pw.length<6){toast('이름, 이메일, 6자 이상 비밀번호를 입력해주세요.');return}const {data,error}=await client.auth.signUp({email,password:pw,options:{data:{name,phone}}});if(error){toast(error.message);return}toast(data.session?'회원가입 및 로그인 완료':'가입 완료. 이메일 인증 후 로그인해주세요.');showPage('home')}
-async function login(){if(!configGuard())return;const {error}=await client.auth.signInWithPassword({email:loginEmail.value.trim(),password:loginPw.value});if(error){toast('로그인 실패: '+error.message);return}toast('로그인되었습니다.');showPage('home')}
-async function logout(){if(!configGuard())return;await client.auth.signOut();toast('로그아웃되었습니다.');showPage('home')}
-async function loadCars(){if(!configured){carGrid.innerHTML='<p>Supabase 설정 후 실제 차량 DB가 표시됩니다.</p>';return}const {data,error}=await client.from('cars').select('*').eq('status','available').order('created_at',{ascending:false});if(error){carGrid.innerHTML='<p>차량 불러오기 실패: '+error.message+'</p>';return}cars=data||[];renderCars()}
-function renderCars(){carGrid.innerHTML=cars.length?cars.map(c=>`<article class="card"><div class="thumb"><img src="${carImages[c.id]||'assets/sorento.webp'}" alt="${c.name}"></div><div class="card-body"><div class="name">${c.name}</div><div class="meta">${c.year}년 · ${Number(c.km).toLocaleString()}km · ${c.fuel}</div><div class="price">${Number(c.price).toLocaleString()}만원</div><div class="actions"><button class="btn btn-light" onclick="toggleWishlist(${c.id})">♡ 찜하기</button><button class="btn btn-dark" onclick="startInquiry(${c.id})">구매문의</button></div></div></article>`).join(''):'<p>등록된 차량이 없습니다.</p>'}
-async function toggleWishlist(carId){if(!currentUser){toast('로그인이 필요합니다.');showPage('login');return}const {data}=await client.from('wishlists').select('id').eq('user_id',currentUser.id).eq('car_id',carId).maybeSingle();if(data){const {error}=await client.from('wishlists').delete().eq('id',data.id);if(error){toast(error.message);return}toast('찜에서 삭제했습니다.')}else{const {error}=await client.from('wishlists').insert({user_id:currentUser.id,car_id:carId});if(error){toast(error.message);return}toast('찜에 저장했습니다.')}}
-async function loadWishlist(){if(!currentUser){wishlistGrid.innerHTML='<p>로그인 후 확인할 수 있습니다.</p>';return}const {data,error}=await client.from('wishlists').select('car_id,cars(*)').eq('user_id',currentUser.id);if(error){wishlistGrid.innerHTML='<p>'+error.message+'</p>';return}const list=(data||[]).map(x=>x.cars).filter(Boolean);wishlistGrid.innerHTML=list.length?list.map(c=>`<article class="card"><div class="thumb"><img src="${carImages[c.id]||'assets/sorento.webp'}" alt="${c.name}"></div><div class="card-body"><div class="name">${c.name}</div><div class="meta">${c.year}년 · ${Number(c.km).toLocaleString()}km</div><div class="price">${Number(c.price).toLocaleString()}만원</div><button class="btn btn-dark" style="width:100%" onclick="startInquiry(${c.id})">구매문의</button></div></article>`).join(''):'<p>찜한 차량이 없습니다.</p>'}
+function renderUser(){const el=document.getElementById('userArea');el.innerHTML=currentUser?`<span style="margin-right:8px"><b>${profile?.name||currentUser.email}</b></span><button class="btn btn-light" onclick="logout()">로그아웃</button>`:`<button class="btn btn-light" onclick="showPage('login')">로그인</button>`;document.getElementById('adminMenu').classList.toggle('hidden',profile?.role!=='admin')}
+async function initAuth(){const s=document.getElementById('configStatus');s.className='status ok';s.textContent='Supabase 연결 완료 · 실제 DB 사용 중';const {data:{session}}=await client.auth.getSession();currentUser=session?.user||null;await loadProfile();renderUser();client.auth.onAuthStateChange(async(_event,session)=>{currentUser=session?.user||null;await loadProfile();renderUser()})}
+async function loadProfile(){profile=null;if(!currentUser)return;const {data}=await client.from('profiles').select('*').eq('id',currentUser.id).maybeSingle();profile=data||null}
+async function signup(){const name=signupName.value.trim(),email=signupEmail.value.trim(),pw=signupPw.value,phone=signupPhone.value.trim();if(!name||!email||pw.length<6){toast('이름, 이메일, 6자 이상 비밀번호를 입력해주세요.');return}const {data,error}=await client.auth.signUp({email,password:pw,options:{data:{name,phone}}});if(error){toast(error.message);return}toast(data.session?'회원가입 및 로그인 완료':'가입 완료. 이메일 인증 후 로그인해주세요.');showPage('home')}
+async function login(){const {error}=await client.auth.signInWithPassword({email:loginEmail.value.trim(),password:loginPw.value});if(error){toast('로그인 실패: '+error.message);return}toast('로그인되었습니다.');showPage('home')}
+async function logout(){await client.auth.signOut();toast('로그아웃되었습니다.');showPage('home')}
+async function loadCars(){const {data,error}=await client.from('cars').select('*').eq('status','available').order('created_at',{ascending:false});if(error){carGrid.innerHTML='<p>차량 불러오기 실패: '+error.message+'</p>';return}cars=data||[];renderCars()}
+function renderCars(){carGrid.innerHTML=cars.length?cars.map(c=>`<article class="card"><div class="thumb"><img src="${carImages[c.id]||carImages[1]}" alt="${c.name}"></div><div class="card-body"><div class="name">${c.name}</div><div class="meta">${c.year}년 · ${Number(c.km).toLocaleString()}km · ${c.fuel}</div><div class="price">${Number(c.price).toLocaleString()}만원</div><div class="actions"><button class="btn btn-light" onclick="toggleWishlist(${c.id})">♡ 찜하기</button><button class="btn btn-dark" onclick="startInquiry(${c.id})">구매문의</button></div></div></article>`).join(''):'<p>등록된 차량이 없습니다.</p>'}
+async function toggleWishlist(carId){if(!currentUser){toast('로그인이 필요합니다.');showPage('login');return}const {data}=await client.from('wishlists').select('id').eq('user_id',currentUser.id).eq('car_id',carId).maybeSingle();if(data){await client.from('wishlists').delete().eq('id',data.id);toast('찜에서 삭제했습니다.')}else{const {error}=await client.from('wishlists').insert({user_id:currentUser.id,car_id:carId});if(error){toast(error.message);return}toast('찜에 저장했습니다.')}}
+async function loadWishlist(){if(!currentUser){wishlistGrid.innerHTML='<p>로그인 후 확인할 수 있습니다.</p>';return}const {data,error}=await client.from('wishlists').select('car_id,cars(*)').eq('user_id',currentUser.id);if(error){wishlistGrid.innerHTML='<p>'+error.message+'</p>';return}const list=(data||[]).map(x=>x.cars).filter(Boolean);wishlistGrid.innerHTML=list.length?list.map(c=>`<article class="card"><div class="thumb"><img src="${carImages[c.id]||carImages[1]}" alt="${c.name}"></div><div class="card-body"><div class="name">${c.name}</div><div class="meta">${c.year}년 · ${Number(c.km).toLocaleString()}km</div><div class="price">${Number(c.price).toLocaleString()}만원</div><button class="btn btn-dark" style="width:100%" onclick="startInquiry(${c.id})">구매문의</button></div></article>`).join(''):'<p>찜한 차량이 없습니다.</p>'}
 function startInquiry(carId){if(!currentUser){toast('로그인이 필요합니다.');showPage('login');return}showPage('inquiry');inquiryCar.value=String(carId)}
 function fillInquiry(){inquiryCar.innerHTML=cars.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');inquiryName.value=profile?.name||'';inquiryPhone.value=profile?.phone||''}
-async function saveInquiry(){if(!currentUser){toast('로그인이 필요합니다.');return}const carId=Number(inquiryCar.value);const car=cars.find(c=>c.id===carId);const payload={user_id:currentUser.id,car_id:carId,car_name:car?.name||'',name:inquiryName.value.trim(),phone:inquiryPhone.value.trim(),message:inquiryText.value.trim(),status:'received'};if(!payload.name||!payload.phone||!payload.message){toast('문의 내용을 모두 입력해주세요.');return}const {error}=await client.from('inquiries').insert(payload);if(error){toast(error.message);return}inquiryText.value='';toast('구매 문의가 접수되었습니다.')}
+async function saveInquiry(){if(!currentUser){toast('로그인이 필요합니다.');return}const carId=Number(inquiryCar.value),car=cars.find(c=>c.id===carId);const payload={user_id:currentUser.id,car_id:carId,car_name:car?.name||'',name:inquiryName.value.trim(),phone:inquiryPhone.value.trim(),message:inquiryText.value.trim(),status:'received'};if(!payload.name||!payload.phone||!payload.message){toast('문의 내용을 모두 입력해주세요.');return}const {error}=await client.from('inquiries').insert(payload);if(error){toast(error.message);return}inquiryText.value='';toast('구매 문의가 접수되었습니다.')}
 async function loadAdmin(){if(profile?.role!=='admin'){toast('관리자 권한이 없습니다.');showPage('home');return}const {data:allCars}=await client.from('cars').select('*').order('id');adminCarTable.innerHTML=(allCars||[]).map(c=>`<tr><td>${c.id}</td><td>${c.name}</td><td>${c.brand}</td><td>${c.year}</td><td>${Number(c.km).toLocaleString()}km</td><td>${Number(c.price).toLocaleString()}만원</td><td><button class="btn btn-danger" onclick="deleteCar(${c.id})">삭제</button></td></tr>`).join('');const {data:inq}=await client.from('inquiries').select('*').order('created_at',{ascending:false});adminInquiryTable.innerHTML=(inq||[]).map(i=>`<tr><td>${i.car_name}</td><td>${i.name}</td><td>${i.phone}</td><td>${i.message}</td><td>${i.status}</td></tr>`).join('')}
 async function addCar(){if(profile?.role!=='admin')return;const payload={brand:adminBrand.value.trim(),name:adminName.value.trim(),type:adminType.value.trim(),year:Number(adminYear.value),km:Number(adminKm.value),fuel:adminFuel.value.trim(),price:Number(adminPrice.value),emoji:adminEmoji.value.trim()||'🚗',status:'available'};if(!payload.brand||!payload.name||!payload.type||!payload.year||!payload.price){toast('차량 정보를 입력해주세요.');return}const {error}=await client.from('cars').insert(payload);if(error){toast(error.message);return}toast('차량이 등록되었습니다.');await loadCars();await loadAdmin()}
 async function deleteCar(id){if(profile?.role!=='admin')return;if(!confirm('차량을 삭제하시겠습니까?'))return;const {error}=await client.from('cars').delete().eq('id',id);if(error){toast(error.message);return}toast('삭제되었습니다.');await loadCars();await loadAdmin()}
-initAuth();
-loadCars();
+initAuth();loadCars();
 </script>
 </body>
 </html>
